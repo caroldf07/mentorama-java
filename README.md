@@ -1,4 +1,6 @@
 # Desenvolvedora Java
+- [Desafio #1 - Refatoração, Looping e Condições](https://github.com/caroldf07/mentorama-java#desafio-1- "Desafio #1 - Refatoração, Looping e Condições")
+- [Desafio #2 - Encapsulamento, Getters e Setters](https://github.com/caroldf07/mentorama-java#desafio-2- "Desafio #2 - Encapsulamento, Getters e Setters")
 
 ------------
 
