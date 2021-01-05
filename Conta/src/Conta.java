@@ -1,8 +1,8 @@
-public abstract class Conta {
+public abstract class Conta implements Tributacao{
     private int numero;
     private int agencia;
     private String banco;
-    private double saldo;
+    protected Double saldo;
     private double valorRetirada;
     private double valorDeposito;
 
@@ -30,9 +30,7 @@ public abstract class Conta {
         this.banco = banco;
     }
 
-    public double getSaldo() {
-        return saldo;
-    }
+    public abstract Double getSaldo();
 
     public void setSaldo(double saldo) {
         this.saldo = saldo;
@@ -82,13 +80,15 @@ public abstract class Conta {
         this.valorDeposito = valorDeposito;
     }
 
-    public Double sacar(Double valorRetirada){
-        this.valorRetirada = getValorRetirada();
-        return getSaldo() - getValorRetirada();
+    public abstract Boolean sacar(Double valorRetirada);
+
+    public void depositar(Double valorDeposito){
+        this.valorDeposito = getValorDeposito();
+        this.saldo += valorDeposito;
     }
 
-    public Double depositar(Double valorDeposito){
-        this.valorDeposito = getValorDeposito();
-        return getSaldo() + getValorDeposito();
+    public void transferir(Conta destino, Double valorTransferencia){
+        this.saldo = this.saldo - valorTransferencia;
+        destino.saldo += valorTransferencia;
     }
 }

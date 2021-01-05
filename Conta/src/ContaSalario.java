@@ -1,23 +1,33 @@
 public class ContaSalario extends Conta{
+    @Override
+    public Double getSaldo() {
+        return this.saldo;
+    }
+
     public ContaSalario(int numero, int agencia, String banco, double saldo, double valorRetirada, double valorDeposito) {
         super(numero, agencia, banco, saldo, valorRetirada, valorDeposito);
     }
 
     @Override
-    public Double sacar(Double valorRetirada) {
+    public Boolean sacar(Double valorRetirada) {
         if(getSaldo() > 0) {
-            return super.sacar(valorRetirada);
+            this.saldo -= valorRetirada;
+            return true;
         } else{
             System.out.println("Você não pode realizar essa ação");
+            return false;
         }
-        return null;
     }
 
     @Override
-    public Double depositar(Double valorDeposito) {
-        return super.depositar(valorDeposito);
+    public String toString() {
+        return "ContaSalario{" +
+                "saldo=" + saldo +
+                '}';
     }
 
-
-
+    @Override
+    public double getValorImposto() {
+        return 0;
+    }
 }

@@ -1,4 +1,3 @@
-import java.util.Scanner;
 
 public class ContaCorrente extends Conta{
     private double chequeEspecial;
@@ -17,6 +16,11 @@ public class ContaCorrente extends Conta{
     }
 
     @Override
+    public Double getSaldo() {
+        return this.getChequeEspecial() + this.saldo;
+    }
+
+    @Override
     public String toString() {
         return "ContaCorrente{" +
                 "chequeEspecial=" + chequeEspecial +
@@ -24,14 +28,20 @@ public class ContaCorrente extends Conta{
     }
 
     @Override
-    public Double sacar(Double valorRetirada) {
-
+    public Boolean sacar(Double valorRetirada) {
+         valorRetirada = super.getValorRetirada();
         Double totalSaque = getSaldo() + getChequeEspecial();
         if(valorRetirada <=  totalSaque) {
-            return super.sacar(valorRetirada);
+            this.saldo -= valorRetirada;
+            return true;
         } else{
             System.out.println("Você não pode realizar essa ação, valor maior do que limite disponível");
+            return false;
         }
-        return null;
+    }
+
+    @Override
+    public double getValorImposto() {
+        return this.getSaldo()*0.05;
     }
 }
